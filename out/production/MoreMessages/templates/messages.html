@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{name}}'s Messages</title>
+</head>
+<body>
+<form action="/logout" method="post">
+    <button type="submit">Logout</button>
+</form>
+<h2>Hello, {{name}}! What's on your mind today?</h2>
+Please enter a message below:
+<form action="/create-message" method="post">
+    <input type="text" placeholder="Please enter a message to post" name="messagePost" size="75"/>
+    <button type="submit">Submit</button>
+</form>
+
+
+<h3>Delete Message</h3>
+Please enter a message number to delete:
+<form action="/delete-message" method="post">
+    <input type="number" placeholder="Message #" name="deleteNumber"/>
+    <button type="submit">Delete</button>
+</form>
+<br/>
+
+<h3>Update Message</h3>
+Please enter a message number to update:
+<form action="/update-message" method="post">
+    <input type="number" placeholder="Message #" name="updateNumber"/>
+    <input type="text" placeholder="Please enter an updated message" name="messageUpdate" size="75"/>
+    <button type="submit">Update</button>
+</form>
+<br/>
+
+<h3>Messages</h3>
+<ol>
+    {{#messages}}
+    <li>{{.}}</li>
+    {{/messages}}
+</ol>
+
+{{^messages}}
+No Messages... Yet :)
+{{/messages}}
+</body>
+</html>
