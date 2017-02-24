@@ -1,6 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <style>
+        body {
+            background-image: url("http://4.bp.blogspot.com/-X-pR2usiiRQ/UmkjhizvZ6I/AAAAAAAACzM/dncYa4rsCWY/s1600/multi+speech+bubble.jpg");
+
+            background-repeat: no-repeat;
+            position: relative;
+            background-color: grey;
+            background-attachment: fixed;
+            background-position: center;
+            text-shadow: 2px 2px 8px white;
+            animation: fadein 2s;
+            -moz-animation: fadein 2s; /* Firefox */
+            -webkit-animation: fadein 2s; /* Safari and Chrome */
+            -o-animation: fadein 2s; /* Opera */
+        }
+
+        @keyframes fadein {
+            from {
+                opacity:0;
+            }
+            to {
+                opacity:1;
+            }
+        }
+        @-moz-keyframes fadein { /* Firefox */
+            from {
+                opacity:0;
+            }
+            to {
+                opacity:1;
+            }
+        }
+        @-webkit-keyframes fadein { /* Safari and Chrome */
+            from {
+                opacity:0;
+            }
+            to {
+                opacity:1;
+            }
+        }
+        input[type=text] {
+            filter: alpha(Opacity=90);
+            opacity: 0.9;
+            border: 2px solid midnightblue;
+            border-radius: 4px;
+            width: 50%;
+            padding: 12px 20px;
+            margin: 8px 0;
+
+        }
+
+        input[type=number] {
+            filter: alpha(Opacity=90);
+            opacity: 0.9;
+            border: 2px solid midnightblue;
+            border-radius: 4px;
+            width: 5%;
+            padding: 12px 20px;
+            margin: 8px 0;
+
+        }
+
+        button {
+            background-color: midnightblue;
+            border-radius: 3px;
+            border: 2px solid white;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 12px;
+            margin: 4px 2px;
+            cursor: pointer;
+
+
+        }
+
+        button:hover {
+            box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+        }
+
+        h2{
+            color: white;
+            text-shadow: 1px 1px 2px black, 0 0 25px yellow, 0 0 5px black;
+            letter-spacing: 1.5px;
+        }
+
+        h3{
+            color: white;
+            text-shadow: 1px 1px 2px black, 0 0 25px yellow, 0 0 5px black;
+            letter-spacing: 1.25px;
+        }
+    </style>
     <meta charset="UTF-8">
     <title>{{name}}'s Messages</title>
 </head>
@@ -28,6 +122,7 @@ Please enter a message number to delete:
 Please enter a message number to update:
 <form action="/update-message" method="post">
     <input type="number" placeholder="Message #" name="updateNumber"/>
+    <br />
     <input type="text" placeholder="Please enter an updated message" name="messageUpdate" size="75"/>
     <button type="submit">Update</button>
 </form>
@@ -35,13 +130,16 @@ Please enter a message number to update:
 
 <h3>Messages</h3>
 <ol>
-    {{#messages}}
+  <h3>{{#messages}}
     <li>{{.}}</li>
     {{/messages}}
+  </h3>
 </ol>
 
+<h3>
 {{^messages}}
 No Messages... Yet :)
 {{/messages}}
+</h3>
 </body>
 </html>

@@ -12,6 +12,7 @@ public class Main {
     public static void main(String[] args) {
 
         Spark.init();
+        //<editor-fold desc="Get /">
         Spark.get("/", (request, response) -> {
 
                     Session session = request.session();
@@ -29,7 +30,9 @@ public class Main {
                 },
                 new MustacheTemplateEngine()
         );
+        //</editor-fold>
 
+        //<editor-fold desc="Create-User">
         Spark.post("/create-user", (request, response) -> {
                     String name = request.queryParams("userName");
                     String password = request.queryParams("password");
@@ -56,8 +59,9 @@ public class Main {
                     return "";
                 }
         );
+        //</editor-fold>
 
-
+        //<editor-fold desc="Create-Message">
         Spark.post("/create-message", (request, response) -> {
                     Session session = request.session();
                     String name = session.attribute("userName");
@@ -67,7 +71,9 @@ public class Main {
                     return "";
                 }
         );
+        //</editor-fold>
 
+        //<editor-fold desc="Update-Message">
         Spark.post("/update-message", (request, response) -> {
                     Session session = request.session();
                     String name = session.attribute("userName");
@@ -78,7 +84,9 @@ public class Main {
                     return "";
                 }
         );
+        //</editor-fold>
 
+        //<editor-fold desc="Delete-Message">
         Spark.post("/delete-message", (request, response) -> {
                     Session session = request.session();
                     String name = session.attribute("userName");
@@ -89,13 +97,16 @@ public class Main {
                     return "";
                 }
         );
+        //</editor-fold>
 
+        //<editor-fold desc="Logout">
         Spark.post("/logout", (request, response) -> {
             Session session = request.session();
             session.invalidate();
             response.redirect("/");
             return "";
         });
+        //</editor-fold>
 
     }
 }
